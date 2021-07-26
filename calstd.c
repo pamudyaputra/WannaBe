@@ -1,10 +1,14 @@
-#include calcstd.h
+#include "calstd.h"
+
+#ifndef calstd_C
+#define calstc_C
 
 nodeL infixExpressions = NULL;
 nodeL postfixExpressions = NULL;
 
 int CalStandard()
 {
+	system ("cls");
 	int i = 0, counter = 0;
 	int cek = 0;
 
@@ -81,3 +85,5 @@ nodeT BuildTreeInterface(char *expression)
     }
     return tree;
 }
+
+#endif

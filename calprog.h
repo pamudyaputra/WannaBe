@@ -6,9 +6,7 @@
 #include <math.h>
 #include <string.h>
 #include <stdbool.h>
-
-void gotoxy(int x, int y);
-	/* Kursor untuk menunjuk pada titik (x,y) tertentu */
+#include "map.h"
 
 void PrintTemplate();
 	/* Menampilkan template tampilan */
@@ -100,6 +98,5 @@ void CalProgram();
 	/* I.S. : Program belum berjalan */
 	/* F.S. : Layar akan menampilkan bilangan yang diinput dan */
 	/*		  semua hasil konversi ke sistem bilangan yang lainnya */
-
 
 #endif

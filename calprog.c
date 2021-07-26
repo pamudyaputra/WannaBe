@@ -1,16 +1,7 @@
 #include "calprog.h"
 
-#ifndef calcstd_H
-#define calcstd_H
-
-void gotoxy(int x, int y) {
-	/* Kursor untuk menunjuk pada titik (x,y) tertentu */
-		
-  	COORD coord;
-  	coord.X = x;
-  	coord.Y = y;
-  	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-}
+#ifndef calcstd_C
+#define calcstd_C
 
 void From(int opt){
 	/* Pemilihan modul konversi berdasarkan pilihan */
@@ -322,22 +313,6 @@ void PrintTemplate(){
 	gotoxy(0,7); printf("Pilih :    ");
 }
 
-int main(){
-	int choice = -1;
-	
-	while(true){
-		PrintTemplate();
-		gotoxy(8,7); scanf("%d", &choice);
-		if(choice == 1 || choice == 2 || choice == 3 || choice == 4){
-			break;
-		} else {
-			gotoxy(0,8); printf("Input Nomor Salah! Coba Lagi!");
-		}
-	}
-	From(choice);
-	return 0;
-}
-
 void CalProgram(){
 	/* Kalkulator Program untuk mengkonversi sistem bilangan */
 	/* Desimal, Biner, Octadesimal, atau Hexadesimal ke sistem lainnya */
@@ -346,9 +321,10 @@ void CalProgram(){
 	/*		  semua hasil konversi ke sistem bilangan yang lainnya */
 	
 	/* Kamus Data */
-	int choice1 = -1;
+	int choice = -1;
 	
 	/* Algoritma */
+	system("cls");
 	while(true){
 		PrintTemplate();
 		gotoxy(8,7); scanf("%d", &choice);

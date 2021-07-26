@@ -1,14 +1,11 @@
 # include "map.h"
 
-int i, j, width, height;
+int i, j, width, height, x, y;
 
 void screenMode() 
 {
 	// Screen color	
 	system("color f0");
-	
-	CONSOLE_SCREEN_BUFFER_INFOEX info = {0};
-    HANDLE hConsole = NULL;
 		
     // Screen mode full
     ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
@@ -16,6 +13,10 @@ void screenMode()
 
 int getWidth() 
 {	
+		
+	CONSOLE_SCREEN_BUFFER_INFOEX info = {0};
+    HANDLE hConsole = NULL;
+    
     // Get width of this window
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     info.cbSize = sizeof(info);
@@ -28,6 +29,9 @@ int getWidth()
 
 int getHeight() 
 {	
+	CONSOLE_SCREEN_BUFFER_INFOEX info = {0};
+    HANDLE hConsole = NULL;
+	
     // Get height of this window
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     info.cbSize = sizeof(info);
@@ -35,7 +39,7 @@ int getHeight()
 
     height = info.srWindow.Bottom;
     
-	retunr height;
+	return height;
 }
 
 /* Kursor untuk menunjuk pada titik (x,y) tertentu */
@@ -47,11 +51,11 @@ void gotoxy(int x, int y)
   	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-char calStd[17][63] = {
-	"[============================================================]",
-	"|               [==== [====] |     [==== [====]              |",
+char menu[18][63] = {
+	"{============================================================}",
+	"|               {==== {====} |     {==== {====}              |",
 	"|               |     |    | |     |     |    |              |",
-	"|               |     <====) |     |     |    |              |",
+	"|               |     <====> |     |     |    |              |",
 	"|               (==== |    | (==== (==== (====)              |",
 	"|                       / Adriana Pamudya 2021/              |",
 	"<============================================================>",
@@ -64,20 +68,22 @@ char calStd[17][63] = {
 	"| 5 - Credit                                                 |",
 	"| 0 - Exit                                                   |",
 	"<============================================================>",
-	"| Your choice of menu :   [ENTER]                            |",
-	"()============================================================)",
-}
+	"| Your choice of menu : [ ][ENTER]                           |",
+	"(============================================================)"
+};
 
 
-void showCalStd() 
+void mapMenu(int *choice) 
 {
-	width = getWidth;
-	height = getHeight;
+	width = (int)getWidth();
+	height = (int)getHeight();
 	
-	for (i = 0; i < 17; i++) {
-		gotoxy(width / 2 - 31, height / 2 - 8 + i );	
+	for (i = 0; i < 18; i++) {
+		x = width / 2 - 31;
+		y = height / 2 - 8;	
+		gotoxy(x, y + i );	
 		for (j = 0; j < 62; j++) {
-			replace(calStd[i][j]);
+			replace(menu[i][j]);
 		}
 	}
 }
@@ -98,16 +104,16 @@ void replace(char t)
 		printf ("%c", 185);
 	else if(t == '%')
 		printf ("%c", 202);
-	else if(t == '[')
+	else if(t == '{')
 		printf ("%c", 201);
-	else if(t == ']')
+	else if(t == '}')
 		printf ("%c", 187);
 	else if(t == '(')
 		printf ("%c", 200);
 	else if(t == ')')
 		printf ("%c", 188);
 	//Player 1
-	else if(t == ':')
+	else if(t == ';')
 		printf ("%c", 176);
 	//Player 2
 	else if(t == '*')

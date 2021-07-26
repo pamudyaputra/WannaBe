@@ -7,11 +7,11 @@
 #include "postfix.h"
 #include "bintree.h"
 
-#ifndef calcstd_H
-#define calcstd_H
+#ifndef calstd_H
+#define calstd_H
 
 nodeT BuildTreeInterface(char *);
 
-int CalStandard()
+int CalStandard();
 
 #endif
