@@ -1,3 +1,9 @@
+/* Program : calprog.h
+ * Deskripsi : Header file implementasi fitur kalkulator program
+ * Author : Pamudya Putra Pamungkas - 201524058
+ * Tanggal : 26 Juli 2021
+ */
+
 #ifndef calprog_H
 #define calprog_H
 
@@ -6,12 +12,19 @@
 #include <math.h>
 #include <string.h>
 #include <stdbool.h>
-#include "map.h"
 
-void PrintTemplate();
-	/* Menampilkan template tampilan */
-	/* I.S. : Template belum tertampil */
-	/* F.S. : Template sudah tertampil */
+void gotoxy(int x, int y);
+	/* Kursor untuk menunjuk pada titik (x,y) tertentu */
+
+void showCalProgIn();
+	/* Menampilkan tampilan utama fitur kalkulator program */
+	/* I.S. : Program belum berjalan */
+	/* F.S. : Tampilan utama fitur kalkulator program sudah tampil */
+	
+void showCalProgOut(int choice);
+	/* Menampilkan tampilan fitur konversi sesuai dengan inputan user */
+	/* I.S. : Program belum berjalan */
+	/* F.S. : Tampilan fitur konversi sudah tampil */
 
 void From(int opt);
 	/* Pemilihan modul konversi berdasarkan pilihan */
@@ -92,11 +105,12 @@ int HexDec();
 	/* Sumber referensi algoritma : https://aticleworld.com/c-program-to-convert-hexadecimal-to-decimal/ */
 	/* Dimodifikasi oleh : Pamudya Putra Pamungkas */
 
-void CalProgram();
+void CalProg();
 	/* Kalkulator Program untuk mengkonversi sistem bilangan */
 	/* Desimal, Biner, Octadesimal, atau Hexadesimal ke sistem lainnya */
 	/* I.S. : Program belum berjalan */
 	/* F.S. : Layar akan menampilkan bilangan yang diinput dan */
 	/*		  semua hasil konversi ke sistem bilangan yang lainnya */
+
 
 #endif
