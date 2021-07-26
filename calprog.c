@@ -11,184 +11,6 @@ int i, j, width, height;
 
 /* Body Function/Procedure */
 
-//void gotoxy(int x, int y) {
-//	/* Kursor untuk menunjuk pada titik (x,y) tertentu */
-//		
-//  	COORD coord;
-//  	coord.X = x;
-//  	coord.Y = y;
-//  	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-//}
-
-char calProgIn[16][62] = {	// Tampilan Menu Utama Kalkulator Program
-	"{============================================================}",
-	"|                   Programming Calculator                   |",
-	"<============================================================>",
-	"|                        Convert From                        |",
-	"<============================================================>",
-	"|                                                            |",
-	"|       1. Decimal                                           |",
-	"|       2. Binary                                            |",
-	"|       3. Octadecimal                                       |",
-	"|       4. Hexadecimal                                       |",
-	"|                                                            |",
-	"|       5. Back to Menu                                      |",
-	"|                                                            |",
-	"|  Your Choice : [ ][ENTER]                                  |",
-	"|                                                            |",
-	"(============================================================)"
-};
-
-void showCalProgIn(){
-	/* Menampilkan tampilan utama fitur kalkulator program */
-	/* I.S. : Program belum berjalan */
-	/* F.S. : Tampilan utama fitur kalkulator program sudah tampil */
-	
-	/* Kamus Data */
-	
-	/* Algoritma */
-	width = getWidth();
-	height = getHeight();
-	
-	for(i = 0; i < 16; i++){
-		gotoxy(width/2-31, height/2 - 8 + i);
-		for(j = 0; j < 62; j++){
-			replace(calProgIn[i][j]);
-		}
-	}
-}
-
-char calProgOut1[16][62] = {	// Tampilan fitur ketika user input 1
-	"{============================================================}",
-	"| Type Decimal Number ['0' to go back to menu]               |",
-	"|[                                                          ]|",
-	"<============================================================>",
-	"|                                                            |",
-	"| Decimal         :                                          |",
-	"|                                                            |",
-	"| Binary          :                                          |",
-	"|                                                            |",
-	"| Octadecimal     :                                          |",
-	"|                                                            |",
-	"| Hexadecimal     :                                          |",
-	"|                                                            |",
-	"<============================================================>",
-	"|                                                            |",
-	"(============================================================)",
-};
-
-char calProgOut2[16][62] = {	// Tampilan fitur ketika user input 2
-	"{============================================================}",
-	"| Type Binary Number ['0' to go back to menu]                |",
-	"|[                                                          ]|",
-	"<============================================================>",
-	"|                                                            |",
-	"| Decimal         :                                          |",
-	"|                                                            |",
-	"| Binary          :                                          |",
-	"|                                                            |",
-	"| Octadecimal     :                                          |",
-	"|                                                            |",
-	"| Hexadecimal     :                                          |",
-	"|                                                            |",
-	"<============================================================>",
-	"|                                                            |",
-	"(============================================================)",
-};
-
-char calProgOut3[16][62] = {	// Tampilan fitur ketika user input 3
-	"{============================================================}",
-	"| Type Octadecimal Number ['0' to go back to menu]           |",
-	"|[                                                          ]|",
-	"<============================================================>",
-	"|                                                            |",
-	"| Decimal         :                                          |",
-	"|                                                            |",
-	"| Binary          :                                          |",
-	"|                                                            |",
-	"| Octadecimal     :                                          |",
-	"|                                                            |",
-	"| Hexadecimal     :                                          |",
-	"|                                                            |",
-	"<============================================================>",
-	"|                                                            |",
-	"(============================================================)",
-};
-
-char calProgOut4[16][62] = {	// Tampilan fitur ketika user input 4
-	"{============================================================}",
-	"| Type Hexadecimal Number ['0' to go back to menu]           |",
-	"|[                                                          ]|",
-	"<============================================================>",
-	"|                                                            |",
-	"| Decimal         :                                          |",
-	"|                                                            |",
-	"| Binary          :                                          |",
-	"|                                                            |",
-	"| Octadecimal     :                                          |",
-	"|                                                            |",
-	"| Hexadecimal     :                                          |",
-	"|                                                            |",
-	"<============================================================>",
-	"|                                                            |",
-	"(============================================================)",
-};
-
-void showCalProgOut(int choice){
-	/* Menampilkan tampilan fitur konversi sesuai dengan inputan user */
-	/* I.S. : Program belum berjalan */
-	/* F.S. : Tampilan fitur konversi sudah tampil */
-	
-	/* Kamus Data */
-	
-	/* Algoritma */
-	width = getWidth();
-	height = getHeight();
-	
-	for(i = 0; i < 16 ; i++){
-		gotoxy(width/2-31, height/2 - 8 + i);
-		for(j = 0; j < 62; j++){
-			switch(choice){
-				case 1:		// Convert from Decimal
-					replace(calProgOut1[i][j]); break;
-				case 2:		// Convert from Binary
-					replace(calProgOut2[i][j]); break;
-				case 3:		// Convert from Octadecimal
-					replace(calProgOut3[i][j]); break;
-				case 4:		// Convert from Hexadecimal
-					replace(calProgOut4[i][j]); break;
-			}
-		}
-	}
-}
-
-//void replace(char t){
-//	if(t == '=')
-//		printf ("%c", 205);
-//	else if(t == '|')
-//		printf ("%c", 186);
-//	else if(t == '#')
-//		printf ("%c", 206);
-//	else if(t == '^')
-//		printf ("%c", 203);
-//	else if(t == '<')
-//		printf ("%c", 204);
-//	else if(t == '>')
-//		printf ("%c", 185);
-//	else if(t == '%')
-//		printf ("%c", 202);
-//	else if(t == '{')
-//		printf ("%c", 201);
-//	else if(t == '}')
-//		printf ("%c", 187);
-//	else if(t == '(')
-//		printf ("%c", 200);
-//	else if(t == ')')
-//		printf ("%c", 188);
-//	else
-//		printf ("%c", t);
-//}
-
 void From(int opt){
 	/* Pemilihan modul konversi berdasarkan pilihan */
 	/* jenis bilangan yang akan dikonversi */
@@ -228,7 +50,7 @@ void FromDec(){
 	
 	/* Algoritma */
 	// Print Layout
-	showCalProgOut(1);
+	mapCalProgOut(1);
 	
 	// Scan User Input
 	gotoxy(width/2-31+3, height/2-8+2); scanf("%d", &dec);
@@ -436,7 +258,7 @@ int BinDec(){
 	/* Algoritma */ 
 	while(1){
 		// Print Layout
-		showCalProgOut(2);
+		mapCalProgOut(2);
 		
 		// Scan User Input
 		gotoxy(width/2-31+3, height/2-8+2); getchar(); scanf("%[^\n]s", &bin);
@@ -493,7 +315,7 @@ int OctDec(){
 	/* Algoritma */
 	while(1){
 		// Print Layout
-		showCalProgOut(3);
+		mapCalProgOut(3);
 		// Scan User Input
 		gotoxy(width/2-31+3, height/2-8+2); scanf("%d", &oct);
 		
@@ -547,7 +369,7 @@ int HexDec(){
 	/* Algoritma */
 	while(1){
 		// Print Layout
-		showCalProgOut(4);
+		mapCalProgOut(4);
 		// Scan User Input
 		gotoxy(width/2-31+3, height/2-8+2); getchar(); scanf("%[^\n]s", &hex);
 		
@@ -598,48 +420,6 @@ int HexDec(){
 	return dec;
 }
 
-//void screenMode(){
-//	// Screen color	
-//	system("color f0");
-//		
-//    // Screen mode full
-//    ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
-//}
-
-//int getWidth() {	
-//	CONSOLE_SCREEN_BUFFER_INFOEX info = {0};
-//    HANDLE hConsole = NULL;
-//    
-//    // Get width of this window
-//    hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-//    info.cbSize = sizeof(info);
-//    GetConsoleScreenBufferInfoEx(hConsole, &info);
-//
-//    width = info.srWindow.Right;
-//	
-//	return width;
-//}
-
-//int getHeight() {	
-//	CONSOLE_SCREEN_BUFFER_INFOEX info = {0};
-//    HANDLE hConsole = NULL;
-//
-//    // Get height of this window
-//    hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-//    info.cbSize = sizeof(info);
-//    GetConsoleScreenBufferInfoEx(hConsole, &info);
-//
-//    height = info.srWindow.Bottom;
-//    
-//	return height;
-//}
-
-//int main(){
-//	CalProg();
-//	
-//	return 0;
-//}
-
 void CalProg(){
 	/* Kalkulator Program untuk mengkonversi sistem bilangan */
 	/* Desimal, Biner, Octadesimal, atau Hexadesimal ke sistem lainnya */
@@ -654,17 +434,17 @@ void CalProg(){
 	width = getWidth();
 	height = getHeight();
 	
-	screenMode();
 	while(1){
-		showCalProgIn();
-		gotoxy(width/2-31+18, height/2-8+13); scanf("%d", &choice);
+		system("cls");
+		mapCalProgIn();
+		gotoxy(width/2-31+18, height/2-8+12); scanf("%d", &choice);
 		if(choice > 0 && choice < 5){
 			system("cls");
 			From(choice);
 			gotoxy(width/2-31+2, height/2-8+14); printf("Press any key to go back... "); getch();
 			system("cls");
 		}
-		if(choice == 5)
+		if(choice == 0)
 			return;	
 	}
 }

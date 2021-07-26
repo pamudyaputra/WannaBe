@@ -1,10 +1,18 @@
+/* 
+ * Program 			: main.c
+ * Deskripsi 		: Program utama
+ * Nama 			: Adriana Anggita Daeli 
+ * Tanggal			: 26 Juli 2021
+ * Compiler			: Dev-C++
+ * ==============================================================
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
 #include <string.h>
 #include <stdbool.h>
 #include <math.h>
-
 #include "calprog.h"
 #include "calstd.h"
 #include "map.h"
@@ -17,8 +25,8 @@ int main() {
 		system("cls");
 		mapMenu(&choice);
 		
-		int	width = (int)getWidth();
-		int	height = (int)getHeight();
+		int	width = getWidth();
+		int	height = getHeight();
 		
 		int x = width / 2 - 6;
 		int y = height / 2 + 8;
@@ -30,10 +38,14 @@ int main() {
 				CalStandard();
 				break;
 			case 2 :
-				CalProgram();
+				CalProg();
+				break;
 			case 3 :
+//				History();
 			case 4 :
+//				Help();
 			case 5 :
+//				Credit();
 			case 0 :
 				exit(EXIT_SUCCESS);
 			

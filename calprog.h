@@ -12,19 +12,7 @@
 #include <math.h>
 #include <string.h>
 #include <stdbool.h>
-
-void gotoxy(int x, int y);
-	/* Kursor untuk menunjuk pada titik (x,y) tertentu */
-
-void showCalProgIn();
-	/* Menampilkan tampilan utama fitur kalkulator program */
-	/* I.S. : Program belum berjalan */
-	/* F.S. : Tampilan utama fitur kalkulator program sudah tampil */
-	
-void showCalProgOut(int choice);
-	/* Menampilkan tampilan fitur konversi sesuai dengan inputan user */
-	/* I.S. : Program belum berjalan */
-	/* F.S. : Tampilan fitur konversi sudah tampil */
+#include "map.h"
 
 void From(int opt);
 	/* Pemilihan modul konversi berdasarkan pilihan */

@@ -1,3 +1,12 @@
+/* 
+ * Program 			: list.c
+ * Deskripsi 		: Body list berkait dgn representasi fisik
+ * Nama 			: Adriana Anggita Daeli 
+ * Tanggal			: 26 Juli 2021
+ * Compiler			: Dev-C++
+ * ==============================================================
+ */
+
 #include "list.h"
 
 #ifndef list_C

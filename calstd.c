@@ -1,3 +1,12 @@
+/* 
+ * Program 			: calstd.c
+ * Deskripsi 		: Body list berkait dgn kalkulator standard
+ * Nama 			: Adriana Anggita Daeli 
+ * Tanggal			: 26 Juli 2021
+ * Compiler			: Dev-C++
+ * ==============================================================
+ */
+
 #include "calstd.h"
 
 #ifndef calstd_C
