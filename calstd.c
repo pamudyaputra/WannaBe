@@ -200,22 +200,26 @@ bool ValidParenthesized(char *op)
 			// cek belakang
 			if (op[i-1] == ' ') {
 				if ((!isdigit(op[i-2]) || op[i-2] == '+' || op[i-2] == '-' || op[i-2] == '*' || op[i-2] == '/' || op[i-2] == '^') && (op[i-2] != '(' && op[i-21] != ')')) {
+					printf("tes4");
 					return false;
 				}
 			} 
 			if (op[i-1] != ' ') {
 				if ((!isdigit(op[i-1]) || op[i-1] == '+' || op[i-1] == '-' || op[i-1] == '*' || op[i-1] == '/' || op[i-1] == '^') && (op[i-1] != '(' && op[i-1] != ')')) {
+					printf("tes3");
 					return false;
 				} 
 			}
 			// cek depan
 			if (op[i+2] == ' ') {
-				if ((!isdigit(op[i+2]) || op[i+2] == '+' || op[i+2] == '-' || op[i+2] == '*' || op[i+2] == '/' || op[i+2] == '^') && (op[i+2] != '$' && op[i+2] != ')')){
+				if ((!isdigit(op[i+2]) || op[i+2] == '+' || op[i+2] == '-' || op[i+2] == '*' || op[i+2] == '/' || op[i+2] == '^') && (op[i+2] != '$' && op[i+2] != ')' && op[i+1] != '(')){
+					printf("tes2");
 					return false;
 				} 
 			} 
 			if (op[i+1] != ' ') {
-				if ((!isdigit(op[i+1]) || op[i+1] == '+' || op[i+1] == '-' || op[i+1] == '*' || op[i+1] == '/' || op[i+1] == '^') && (op[i+1] != '$' && op[i+1] != ')')){
+				if ((!isdigit(op[i+1]) || op[i+1] == '+' || op[i+1] == '-' || op[i+1] == '*' || op[i+1] == '/' || op[i+1] == '^') && (op[i+1] != '$' && op[i+1] != ')' && op[i+1] != '(')){
+					printf("tes1");
 					return false;
 				} 
 			}
