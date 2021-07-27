@@ -38,13 +38,13 @@ int CalStd()
 		mapCalStd();
 		
 		// Scan user input
-	    gotoxy(width/2-45+3, height/2-8+3); gets(infix);
+	    gotoxy(width/2-45+3, height/2-8+3); scanf("%[^\n]", &infix); getchar();
 	    if (strcmp(infix, "0") == 0) {
 	      break;
 	    }
 	    
-	    if (ValidChar(infix) && ValidParenthesized(infix) && ValidOp(infix)){
-	    	 // Konversi notasi and masukkan ke list
+	    if (ValidChar(infix) && ValidParenthesized(infix) && ValidOp(infix) ){
+	    	// Konversi notasi and masukkan ke list
 		    InfixToPostfix(infix, postfix);
 		    ListPush(&infixExpressions, infix);
 		    ListPush(&postfixExpressions, postfix);
@@ -73,11 +73,8 @@ int CalStd()
 			gotoxy(width/2-45+2, height/2-8+15); printf("Press any key to calculate... "); getch();
 		} else {
 			gotoxy(width/2-45+2, height/2-8+15); printf("Expression invalid! Press any key to calculate... "); getch();
-	 }
-	    
-	   
+		} 
 	}
-
   return 0;
 }
 
@@ -127,7 +124,6 @@ nodeT BuildTreeInterface(char *op)
     }
     return tree;
 }
-
 
 bool ValidParenthesized(char *op) 
 {
@@ -183,54 +179,48 @@ bool ValidParenthesized(char *op)
 	
 	/* Algoritma */
 	for (i = 0; op[i]; i++) {
-		
 		// Spasi lebih dari 1 karakter INVALID
 		if (op[i] == ' ') {
-			if (op[i+2] == ' ') {
+			if (op[i+1] == ' ') {
 				return false;
 			}
 		}	
 		
 		// Titik
-		if (op[i] == '.' && !isdigit(op[i+1])) 
+		if (op[i] == '.' && !isdigit(op[i+1])) {
 			return false;
-	
-		if (op[i] == '.' && !isdigit(op[i-1])) 
+		}
+
+		if (op[i] == '.' && !isdigit(op[i-1])) {
 			return false;
+		}
 		
 		// Operator + - * / ^
 		if (op[i] == '+' || op[i] == '-' || op[i] == '*' || op[i] == '/' || op[i] == '^') {
 			// cek belakang
 			if (op[i-1] == ' ') {
-				if (!isdigit(op[i-2]) || op[i-2] == '+' || op[i-2] == '-' || 
-					op[i-2] == '*' || op[i-2] == '/' || op[i-2] == '^') {
+				if ((!isdigit(op[i-2]) || op[i-2] == '+' || op[i-2] == '-' || op[i-2] == '*' || op[i-2] == '/' || op[i-2] == '^') && (op[i-2] != '(' && op[i-21] != ')')) {
 					return false;
 				}
 			} 
 			if (op[i-1] != ' ') {
-				if (!isdigit(op[i-1]) || op[i-1] == '+' || op[i-1] == '-' || 
-					op[i-1] == '*' || op[i-1] == '/' || op[i-1] == '^') {
+				if ((!isdigit(op[i-1]) || op[i-1] == '+' || op[i-1] == '-' || op[i-1] == '*' || op[i-1] == '/' || op[i-1] == '^') && (op[i-1] != '(' && op[i-1] != ')')) {
 					return false;
 				} 
 			}
 			// cek depan
-			if (op[i+1] == ' ') {
-				if (!isdigit(op[i+2]) ||  op[i+2] == '+' || op[i+2] == '-' || 	
-					op[i+2] == '*' || op[i+2] == '/' || op[i+2] == '^' ){				
-					if (op[i+2] != '$') {
-						return false;
-					}
+			if (op[i+2] == ' ') {
+				if ((!isdigit(op[i+2]) || op[i+2] == '+' || op[i+2] == '-' || op[i+2] == '*' || op[i+2] == '/' || op[i+2] == '^') && (op[i+2] != '$' && op[i+2] != ')')){
+					return false;
 				} 
 			} 
 			if (op[i+1] != ' ') {
-				if (!isdigit(op[i+1]) || op[i+1] == '+' || op[i+1] == '-' || 
-					op[i+1] == '*' || op[i+1] == '/' || op[i+1] == '^') {
-					if (op[i+1] != '$') {
-						return false;
-					}
+				if ((!isdigit(op[i+1]) || op[i+1] == '+' || op[i+1] == '-' || op[i+1] == '*' || op[i+1] == '/' || op[i+1] == '^') && (op[i+1] != '$' && op[i+1] != ')')){
+					return false;
 				} 
 			}
 		}
+		
 		// Operator $
 		if (op[i] == '$') {
 			// cek belakang
