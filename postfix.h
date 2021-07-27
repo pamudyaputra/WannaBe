@@ -9,10 +9,9 @@
  * ==============================================================
  */
 
-#include <string.h>
 #include <stdbool.h>
+#include <ctype.h>
 #include "list.h"
-#include "utils.h"
 
 #ifndef postfix_H
 #define postfix_H
@@ -23,9 +22,8 @@ typedef struct tNodeStack {
     int top;                        // penanda top
 }NodeStack;
 
-
 nodeS CreateNodeStack(int length);
-/* Konstruktor stack */
+/* Konstruktor node stack */
 /* I.S. : Stack sembarang */
 /* F.S. : Lebar screen komputer diketahui */
 
@@ -47,10 +45,15 @@ char StackPop(nodeS stack);
 
 int GetPrecendence(char ch);
 /* Mengembalikan nilai prioritas dari ch */
+/* Referensi : https://www.geeksforgeeks.org/infix-to-postfix-using-different-precedence-values-for-in-stack-and-out-stack/ */
+/* Dimodifikasi oleh : Adriana Anggita Daeli */
 
 int InfixToPostfix(char *infix, char *postfix);
 /* Mengkonversi notasi infix ke notasi postfix */
 /* I.S. : Notasi infix bisa berisi sebuah ekspresi atau tidak*/
 /* F.S. : Notasi postfix berisi hasil konversi notasi infix */
+/* Referensi : https://www.geeksforgeeks.org/stack-set-2-infix-to-postfix/ */
+/* Dimodifikasi oleh : Adriana Anggita Daeli */
+
 
 #endif

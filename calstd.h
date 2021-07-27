@@ -19,8 +19,26 @@
 #ifndef calstd_H
 #define calstd_H
 
+int CalStd();
+/* Kalkulator standard untuk menghitung sebuah ekspresi */
+/* meggunakan pohon ekspresi */
+/* I.S. : Program belum berjalan */
+/* F.S. : Layar akan menampilkan ekspresi infox, postfix */
+/*		  pohon, dan juga hasil kalkulasiny				 */
+
 nodeT BuildTreeInterface(char *);
+/* Pemilah karakter operator atau operand dan memprosesnya */
+/* karakter operand terlebih dahulu sebelum dimasukkan ke dalam tree */
+/* I.S. : Pohon belum terkalkulasi */
+/* F.S. : Mengembalikan hasil kalkulasi */
 
-int CalStandard();
+bool ValidChar(char *op);
+/* Pemilah karakter yang tidak valid*/
 
+bool ValidParenthesized(char *op); 
+/* Memilah operator parenthesis yang tidak valid */
+
+bool ValidOp(char *op);
+/* Mengecek operais yang tidak valid*/
+ 
 #endif

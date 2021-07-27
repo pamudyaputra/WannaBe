@@ -22,15 +22,14 @@ typedef struct tNodeList {
 	nodeL next;
 }NodeList;
 
-/*********** PROTOTYPE ****************/
-/* Membuat node list */
 nodeL CreateNodeList (char word[]);
+/* Konstruktor node List */
+/* IS : L sembarang */
+/* FS : Terbentuk List Kosong */
 
 void ListPush (nodeL *list, char word[]);
 /* Menambahkan elemen list di akhir (elemen terakhir adalah yang baru) */
-
-
-/* Print list */
-void PrintList (nodeL list);
+/* IS : L mungkin Kosong */
+/* FS : Melakukan alokasi sebuah elemen dan menggabungkan dengan list yang ada*/
 
 #endif

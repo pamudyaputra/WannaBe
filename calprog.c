@@ -437,11 +437,11 @@ void CalProg(){
 	while(1){
 		system("cls");
 		mapCalProgIn();
-		gotoxy(width/2-31+18, height/2-8+12); scanf("%d", &choice);
+		gotoxy(width/2-31+42, height/2-8+12); scanf("%d", &choice);
 		if(choice > 0 && choice < 5){
 			system("cls");
 			From(choice);
-			gotoxy(width/2-31+2, height/2-8+14); printf("Press any key to go back... "); getch();
+			gotoxy(width/2-31+2, height/2-8+14); printf("Press any key to go to menu... "); getch();
 			system("cls");
 		}
 		if(choice == 0)

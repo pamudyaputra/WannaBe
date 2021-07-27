@@ -14,9 +14,10 @@
 #ifndef postfix_C
 #define postfix_C
 
+/* Body fucntion / procedure */
 nodeS CreateNodeStack(int length) 
 {
-    /* Konstruktor stack */
+    /* Konstruktor node stack */
 	/* I.S. : Stack sembarang */
 	/* F.S. : Lebar screen komputer diketahui */
 	
@@ -70,7 +71,6 @@ char StackPop(nodeS stack)
     return stack->array[stack->top--];
 }
 
-
 int GetPrecendence(char ch) 
 {
 	/* Mengembalikan nilai prioritas dari ch */
@@ -122,11 +122,11 @@ int InfixToPostfix(char *infix, char *postfix)
 	    } 
 
         // Operand
-        else if (isNumeric(infix[i]) || infix[i] == '.') {
+        else if (isdigit(infix[i]) || infix[i] == '.') {
             do {
                 postfix[j++] = infix[i++];
                 
-            } while (isNumeric(infix[i]) || infix[i] == '.');
+            } while (isdigit(infix[i]) || infix[i] == '.');
             postfix[j++] = ' ';
             i--;
         }
@@ -160,7 +160,7 @@ int InfixToPostfix(char *infix, char *postfix)
             }
 
             // Jika operator '-'
-            if (infix[i] == '-' && isNumeric(infix[i-1])) {
+            if (infix[i] == '-' && isdigit(infix[i-1])) {
                 StackPush(stack, '+');
             }
 

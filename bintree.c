@@ -3,15 +3,22 @@
 #ifndef bintree_C
 #define bintree_C
 
-/*********** PROTOTYPE ****************/
-/* Membuat node binary tree */
-nodeT CreateNodeTree(double value, bool isNumber) 
+/* Body fucntion / procedure */
+nodeT CreateNodeTree(double value, bool isDigit) 
 {
+	/* Konstruktor node tree dan memberi value pada node tree */
+	/* IS : Node tree sembarang */
+	/* FS : Menghasilkan sebuah node tree dengan value */	
+	
+	/* Kamus Data */
+	nodeT newNode;
+	
+	/* Algoritma */
 	// Alokasi node
-	nodeT newNode = (nodeT)malloc(sizeof(NodeTree));
+	newNode = (nodeT)malloc(sizeof(NodeTree));
 
 	//Memasukkan value dkk
-	newNode->isNumber = isNumber;
+	newNode->isDigit = isDigit;
 	newNode->value = value;
 	newNode->right = NULL;
 	newNode->left = NULL;
@@ -19,17 +26,24 @@ nodeT CreateNodeTree(double value, bool isNumber)
 	return newNode;
 }
 
-/* Memasukkan karakter kepada tree */
-nodeT TreeInsert(nodeT root, double newValue, bool isNumber)
+nodeT TreeInsert(nodeT root, double newValue, bool isDigit)
 {
+	/* Memasukkan atau membuat node tree*/
+	/* IS : Root mungkin saja kosong */
+	/* FS : Root menjadi bagian dari tree dengan value newValue & isDigit */
+	
+	/* Kamus Data */
+	nodeT temp;
+	
+	/* Algoritma */
     // Jika sampai di root kosong
     if (root == NULL) {
-        return CreateNodeTree(newValue, isNumber);
+        return CreateNodeTree(newValue, isDigit);
     }
 
     //Jika root tidak kosong, anak kanan kosong atau root kanan bukan operand
-    if (root->right == NULL || !root->right->isNumber) {
-        nodeT temp = TreeInsert(root->right, newValue, isNumber);
+    if (root->right == NULL || !root->right->isDigit) {
+        temp = TreeInsert(root->right, newValue, isDigit);
         if (temp != NULL) {
             root->right = temp;
             return root;
@@ -37,8 +51,8 @@ nodeT TreeInsert(nodeT root, double newValue, bool isNumber)
     }
 
     //Jika root tidak kosong, anak kiri kosong
-    if (root->value != '-' && root->value != '$' && (root->left == NULL || !root->left->isNumber)) {
-        nodeT temp = TreeInsert(root->left, newValue, isNumber);
+    if (root->value != '-' && root->value != '$' && (root->left == NULL || !root->left->isDigit)) {
+        temp = TreeInsert(root->left, newValue, isDigit);
         if (temp != NULL) {
             root->left = temp;
             return root;
@@ -50,29 +64,44 @@ nodeT TreeInsert(nodeT root, double newValue, bool isNumber)
 /* Menampilakn susunan tree */
 void PrintTree (nodeT root) 
 {
+	/* Menampilakn susunan tree */
+	/* IS : Root terdefinisi */
+	/* FS : Semua simpul root tertampilkan pada layar */
+	
+	/* Kamus Data */
+	
+	/* Algoritma */
     if (root != NULL) {
-        if (root->isNumber) {
+        if (root->isDigit) {
             printf("%.2lf", root->value);
         } else {
             printf("%c", (int)root->value);
         }
-        printf(" (");
+        printf("(");
         PrintTree(root->left);
         PrintTree(root->right);
-        printf(") ");
+        printf(")");
     }
 }
 
 /* Memproses Ekspresion Tree */
 double TreeCalculate(nodeT root) 
 {
+	/* Mengkalkulasikan expression tree */
+	/* IS : - */
+	/* FS : Mengembalikan nilai kalkulasi berupa double */
+	
+	/* Kamus Data */
+	double rightOp, leftOp;
+	
+	/* Algoritma */
     // Hanya angka saja
-	if (root->isNumber) {
+	if (root->isDigit) {
     	return root->value;
 	}
 	
 	// Rekursif kanan
-    double rightOp = TreeCalculate(root->right);
+    rightOp = TreeCalculate(root->right);
     
     // Memproses UNARY OPERATOR
     if (root->value == '-') {
@@ -83,7 +112,7 @@ double TreeCalculate(nodeT root)
 	}
 	
     // Rekursif kiri
-    double  leftOp = TreeCalculate(root->left);
+    leftOp = TreeCalculate(root->left);
 	
     // Memroses BINARY OPERATOR
     switch ((int)(root->value)) {

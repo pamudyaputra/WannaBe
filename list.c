@@ -12,17 +12,24 @@
 #ifndef list_C
 #define list_C
 
-/*********** PROTOTYPE ****************/
-/* Membuat node list */
+/* Body fucntion / procedure */
 nodeL CreateNodeList (char word[]) 
 {  
+	/* Konstruktor Node List */
+	/* IS : L sembarang */
+	/* FS : Terbentuk List Kosong */
+	
+	/* Kamus Data */
+	nodeL newNode;
+	
+	/* Algoritma */
     // Cek string
     if (word == NULL) {
         return NULL;
     }
 
     // Alokasi node
-    nodeL newNode = (nodeL)malloc(sizeof(NodeList));
+    newNode = (nodeL)malloc(sizeof(NodeList));
 
     // Memasukkan string
     strcpy(newNode->string, word);
@@ -31,12 +38,17 @@ nodeL CreateNodeList (char word[])
     return newNode;
 }
 
-/* Memindahkan sebuah string kedalam list node*/
 void ListPush (nodeL *list, char word[]) 
 {
-    nodeL newNode;
+	/* Menambahkan elemen list di akhir (elemen terakhir adalah yang baru) */
+	/* IS : L mungkin Kosong */
+	/* FS : Melakukan alokasi sebuah elemen dan menggabungkan dengan list yang ada*/
+    
+	/* Kamus Data */
+	nodeL newNode;
     nodeL currentNode;
-
+	
+	/* Algoritma */
     // Alokasi
     newNode = CreateNodeList(word);
     
@@ -55,22 +67,6 @@ void ListPush (nodeL *list, char word[])
     }
     currentNode->next = newNode;
     
-}
-
-/* Print list */
-void PrintList (nodeL list) 
-{
-    if (list == NULL) {
-        printf("List Empty.\n");
-    }
-    else {
-        printf("Item from the list: \n");
-        while (list != NULL) {
-            printf("    %s\n", list->string);
-            list = list->next;
-        }
-    }
-    printf("\n");
 }
 
 #endif
