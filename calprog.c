@@ -46,18 +46,39 @@ void FromDec(){
 	/*		  proses konversinya */
 	
 	/* Kamus Data */
-	int dec;	// Decimal value
+	int dec;			// Decimal value
+	char input[100];	// Decimal input
+	int check;			// Validity checker
 	
 	/* Algoritma */
-	// Print Layout
-	mapCalProgOut(1);
-	
-	// Scan User Input
-	gotoxy(width/2-31+3, height/2-8+2); scanf("%d", &dec);
-	
-	if(dec == 0)
-		return;		// Go back to menu
-	
+	while(1){
+		// Print Layout
+		mapCalProgOut(1);
+		
+		// Scan User Input
+		gotoxy(width/2-31+3, height/2-8+2); getchar(); scanf("%[^\n]s", &input);
+		
+		if(strcmp(input,"0") == 0)
+			return;		// Go back to menu
+			
+		check = 1;
+		dec = atoi(input);
+		
+		// Validity Check
+		for(i = 0 ; i < strlen(input); i++){
+			if(input[i] >= '0' && input[i] <= '9'){
+				
+			} else {
+				gotoxy(width/2-31+3, height/2-8+2); printf("The input isn't following the rules! Please input again!");
+				gotoxy(width/2-31+2, height/2-8+14); printf("Press any key to go continue... ");
+				getch();
+				check = 0;
+				break;	// endfor
+			}
+		}
+		if(check == 1)
+			break;	// endwhile
+	}
 	// Print Decimal Value
 	gotoxy(width/2-31+20, height/2-8+5);  printf("%d", dec);
 	// Convert Decimal to Binary and Print Decimal Value
@@ -263,10 +284,10 @@ int BinDec(){
 		// Scan User Input
 		gotoxy(width/2-31+3, height/2-8+2); getchar(); scanf("%[^\n]s", &bin);
 		
-		check = 1;
-	
 		if(strcmp(bin,"0") == 0)
 			return 0;	// Go back to menu
+		
+		check = 1;
 			
 		for(i = 0; i < strlen(bin)-1 ; i++){
 			if(bin[i] == '1' || bin[i] == '0'){
@@ -307,35 +328,43 @@ int OctDec(){
 	/* Dimodifikasi oleh : Pamudya Putra Pamungkas */
 	
 	/* Kamus Data */
-	int dec = 0;	// Decimal value
-	int oct; 		// Octadecimal value by user input
-	int i=0;		// Iterator
-	int check;		// Validity checker
+	int dec = 0;		// Decimal value
+	char input[100]; 	// Input octal
+	int oct; 		 	// Octadecimal value by user input
+	int i=0;			// Iterator
+	int check;			// Validity checker
 	
 	/* Algoritma */
 	while(1){
 		// Print Layout
 		mapCalProgOut(3);
 		// Scan User Input
-		gotoxy(width/2-31+3, height/2-8+2); scanf("%d", &oct);
+		gotoxy(width/2-31+3, height/2-8+2); getchar(); scanf("%[^\n]s", &input);
 		
-		check = oct;
-	
-		if(oct == 0)
+		if(strcmp(input,"0") == 0)
 			return 0;	// Go back to menu
 		
-		while(check != 0){
-				if(check%10 > 7){	// if octal number contains >7 number
-					gotoxy(width/2-31+3, height/2-8+2); printf("The input isn't following the rules! Please input again!");
-					gotoxy(width/2-31+2, height/2-8+14); printf("Press any key to go continue... ");
-					getch();
-					break;	// endwhile
-				}
-			check /= 10;
+		check = 1;
+		oct = atoi(input);
+		
+		// Validity Check
+		for(i = 0 ; i < strlen(input); i++){
+			if(input[i] >= '0' && input[i] <= '7'){
+				
+			} else {
+				gotoxy(width/2-31+3, height/2-8+2); printf("The input isn't following the rules! Please input again!");
+				gotoxy(width/2-31+2, height/2-8+14); printf("Press any key to go continue... ");
+				getch();
+				check = 0;
+				break;	// endfor
+			}
 		}
-		if(check == 0)
+		if(check == 1)
 			break;	// endwhile
 	}
+	
+	// Reset Iterator
+	i = 0;
 	
 	// Print Octadecimal Value
 	gotoxy(width/2-31+20, height/2-8+9); printf("%d", oct);
@@ -373,6 +402,9 @@ int HexDec(){
 		// Scan User Input
 		gotoxy(width/2-31+3, height/2-8+2); getchar(); scanf("%[^\n]s", &hex);
 		
+		if(strcmp(hex, "0") == 0)
+			return 0; 	// Go back to menu
+		
 		check = 1;
 		len = strlen(hex);
 		
@@ -380,9 +412,6 @@ int HexDec(){
 		for(i = 0; i < len ; i++){
 			hex[i] = toupper(hex[i]);
 		}
-		
-		if(strcmp(hex, "0") == 0)
-			return 0; 	// Go back to menu
 		
 		// Validity Check
 		for(i = 0; i < len; i++){
