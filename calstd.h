@@ -19,7 +19,7 @@
 #ifndef calstd_H
 #define calstd_H
 
-int CalStd();
+void CalStd();
 /* Kalkulator standard untuk menghitung sebuah ekspresi */
 /* meggunakan pohon ekspresi */
 /* I.S. : Program belum berjalan */
