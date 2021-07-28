@@ -17,7 +17,7 @@ int i, j, width, height;
 bool valid;
 
 /* Body fucntion / procedure */
-int CalStd()
+void CalStd()
 {
 	/* Kamus Data */
 	int counter = 0;
@@ -70,9 +70,9 @@ int CalStd()
 		    infixExpressions = infixExpressions->next;
 		    postfixExpressions = postfixExpressions->next;
 		
-			gotoxy(width/2-45+2, height/2-8+15); printf("Press any key to calculate... "); getch();
+			gotoxy(width/2-45+2, height/2-8+15); printf("Press any key to calculate again... "); getch();
 		} else {
-			gotoxy(width/2-45+2, height/2-8+15); printf("Expression invalid! Press any key to calculate... "); getch();
+			gotoxy(width/2-45+2, height/2-8+15); printf("Expression is invalid! Please input again... "); getch();
 		} 
 	}
   return 0;

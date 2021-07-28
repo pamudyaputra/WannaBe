@@ -69,8 +69,7 @@ void FromDec(){
 			if(input[i] >= '0' && input[i] <= '9'){
 				
 			} else {
-				gotoxy(width/2-31+3, height/2-8+2); printf("The input isn't following the rules! Please input again!");
-				gotoxy(width/2-31+2, height/2-8+14); printf("Press any key to go continue... ");
+				gotoxy(width/2-31+2, height/2-8+14); printf("The input is invalid! Please input again... ");
 				getch();
 				check = 0;
 				break;	// endfor
@@ -293,8 +292,7 @@ int BinDec(){
 			if(bin[i] == '1' || bin[i] == '0'){
 				
 			} else {	// if binary value contains other than 0 or 1 number
-				gotoxy(width/2-31+3, height/2-8+2); printf("The input isn't following the rules! Please input again!");
-				gotoxy(width/2-31+2, height/2-8+14); printf("Press any key to go continue... ");
+				gotoxy(width/2-31+2, height/2-8+14); printf("The input is invalid! Please input again... ");
 				getch();
 				check = 0;
 				break;	// endfor
@@ -352,8 +350,7 @@ int OctDec(){
 			if(input[i] >= '0' && input[i] <= '7'){
 				
 			} else {
-				gotoxy(width/2-31+3, height/2-8+2); printf("The input isn't following the rules! Please input again!");
-				gotoxy(width/2-31+2, height/2-8+14); printf("Press any key to go continue... ");
+			gotoxy(width/2-31+2, height/2-8+14); printf("The input is invalid! Please input again... ");
 				getch();
 				check = 0;
 				break;	// endfor
@@ -420,8 +417,7 @@ int HexDec(){
 			} else if (hex[i] >= 'A' && hex[i] <= 'F'){
 				check = 1;
 			} else {
-				gotoxy(width/2-31+3, height/2-8+2); printf("The input isn't following the rules! Please input again!");
-				gotoxy(width/2-31+2, height/2-8+14); printf("Press any key to go continue... ");
+				gotoxy(width/2-31+2, height/2-8+14); printf("The input is invalid! Please input again... ");
 				getch();
 				check = 0;
 				break;	// endfor
@@ -470,7 +466,7 @@ void CalProg(){
 		if(choice > 0 && choice < 5){
 			system("cls");
 			From(choice);
-			gotoxy(width/2-31+2, height/2-8+14); printf("Press any key to go to menu... "); getch();
+			gotoxy(width/2-31+2, height/2-8+14); printf("Press any key to go to back... "); getch();
 			system("cls");
 		}
 		if(choice == 0)

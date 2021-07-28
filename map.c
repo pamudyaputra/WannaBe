@@ -16,7 +16,7 @@ int i, j, width, height, x, y;
 void screenMode() 
 {
 	/* Membuat cmd mode fullscreen */
-	system("color f0");	   // Screen color	
+	system("color e4");	   // Screen color	
 		
     ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED); 	// Screen mode full
 }
@@ -237,7 +237,7 @@ char calStdGuide[24][94] = {
 	"{==========================================================================================}",
 	"|                                CALCULATOR STANDARD GUIDE                                 |",
 	"<==========================================================================================>",
- 	"| Follow these rules, otherwise the expression will be considered INVALID                  |",
+ 	"| Follow these rules, otherwise the expression will be considered INVALID!                 |",
  	"|                                                                                          |",
  	"| 1. If you write an unary expressions, especially with the negation operator (-),         |",
  	"|    you must parenthesized the unary operation.                                           |",
@@ -478,7 +478,7 @@ void mapCalStdGuide()
 	
 	for (i = 0; i < 24; i++) {
 		x = width / 2 - 45;
-		y = height / 2 - 13;	
+		y = height / 2 - 11;	
 		gotoxy(x, y + i );	
 		for (j = 0; j < 94; j++) {
 			replace(calStdGuide[i][j]);
