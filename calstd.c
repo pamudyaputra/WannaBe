@@ -75,7 +75,6 @@ void CalStd()
 			gotoxy(width/2-45+2, height/2-8+15); printf("Expression is invalid! Please input again... "); getch();
 		} 
 	}
-  return 0;
 }
 
 nodeT BuildTreeInterface(char *op) 
@@ -196,32 +195,40 @@ bool ValidParenthesized(char *op)
 		}
 		
 		// Operator + - * / ^
-		if (op[i] == '+' || op[i] == '-' || op[i] == '*' || op[i] == '/' || op[i] == '^') {
+		if (op[i] == '+' || op[i] == '-' || op[i] == '*' || op[i] == '/') {
 			// cek belakang
 			if (op[i-1] == ' ') {
 				if ((!isdigit(op[i-2]) || op[i-2] == '+' || op[i-2] == '-' || op[i-2] == '*' || op[i-2] == '/' || op[i-2] == '^') && (op[i-2] != '(' && op[i-21] != ')')) {
-					printf("tes4");
 					return false;
 				}
 			} 
 			if (op[i-1] != ' ') {
 				if ((!isdigit(op[i-1]) || op[i-1] == '+' || op[i-1] == '-' || op[i-1] == '*' || op[i-1] == '/' || op[i-1] == '^') && (op[i-1] != '(' && op[i-1] != ')')) {
-					printf("tes3");
 					return false;
 				} 
 			}
 			// cek depan
 			if (op[i+2] == ' ') {
 				if ((!isdigit(op[i+2]) || op[i+2] == '+' || op[i+2] == '-' || op[i+2] == '*' || op[i+2] == '/' || op[i+2] == '^') && (op[i+2] != '$' && op[i+2] != ')' && op[i+1] != '(')){
-					printf("tes2");
 					return false;
 				} 
 			} 
 			if (op[i+1] != ' ') {
-				if ((!isdigit(op[i+1]) || op[i+1] == '+' || op[i+1] == '-' || op[i+1] == '*' || op[i+1] == '/' || op[i+1] == '^') && (op[i+1] != '$' && op[i+1] != ')' && op[i+1] != '(')){
-					printf("tes1");
+				if ((!isdigit(op[i+1]) || op[i+1] == '+' || op[i+1] == '-' || op[i+1] == '*' || op[i+1] == '/' || op[i+1] == '^') && (op[i+1] != '$' && op[i+1] != ')' && op[i+1] != '(')){					
 					return false;
 				} 
+			}
+		}
+		
+		if (op[i] == '^') {
+			// cek belakang
+			if (!isdigit(op[i-1]) || op[i-1] == ')' || op[i-1] == '(' || op[i-1] == '+' || op[i-1] == '-' || op[i-1] == '*' || op[i-1] == '/' || op[i-1] == '^') {
+				return false;
+			}
+			
+			// cek belakang
+			if (!isdigit(op[i+1]) || op[i+1] == ')' || op[i+1] == '(' || op[i+1] == '+' || op[i+1] == '-' || op[i+1] == '*' || op[i+1] == '/' || op[i+1] == '^') {
+				return false;
 			}
 		}
 		
