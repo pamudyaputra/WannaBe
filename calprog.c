@@ -372,7 +372,7 @@ int BinDec(char* hist){
 	strcpy(hist,bin);
 	
 	// Binary to Decimal Converter
-	for(i = 0 ; i < strlen(bin)-1 ; i++){
+	for(i = 0 ; i < strlen(bin) ; i++){
 		if(bin[i] == '1'){
 			dec = dec*2 + 1;
 		} else {
