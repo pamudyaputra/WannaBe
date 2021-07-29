@@ -79,8 +79,8 @@ char menu[20][63] = {
 	"|                             MENU                           |",
 	"<============================================================>",
 	"|                                                            |",
-	"|       1. Calculator Standard                               |",
-	"|       2. Calculator Program                                |",
+	"|       1. Standard Calculator                               |",
+	"|       2. Programming Calculator                            |",
 	"|       3. History                                           |",
 	"|       4. Guide                                             |",
 	"|       5. Credit                                            |",
@@ -93,9 +93,9 @@ char menu[20][63] = {
 
 char calProgIn[15][62] = {	
 	"{============================================================}",
-	"|                   CALCULATOR PROGRAMMER                    |",
+	"|                  PROGRAMMING CALCULATOR                    |",
 	"<============================================================>",
-	"|                        Convert From                        |",
+	"|                       Convert From                         |",
 	"<============================================================>",
 	"|                                                            |",
 	"|       1. Decimal                                           |",
@@ -186,7 +186,7 @@ char calProgOut4[16][62] = {
 
 char calStd[18][93] = {
 	"{==========================================================================================}",
-	"|                                    CALCULATOR STANDARD                                   |",
+	"|                                    STANDARD CALCULATOR                                   |",
 	"<==========================================================================================>",
 	"| Type an arithmatic expression ['0' to go back to menu]                                   |",
 	"| [                                                                                      ] |",
@@ -211,9 +211,9 @@ char guide[25][93] = {
 	"<==========================================================================================>",
 	"| This calculator has 5 features, namely:                                                  |",
 	"|                                                                                          |",
-    "| 1. Calculator standard, perform standard caculation                                      |",
+    "| 1. Standard calculator, perform standard caculation                                      |",
 	"|                                                                                          |",
-	"| 2. Calcualtor programmer, convert decimal, binary, octadecimal, and hexadecimal numbers. |",
+	"| 2. Programming calculator, convert decimal, binary, octadecimal, and hexadecimal numbers.|",
 	"|                                                                                          |",
 	"| 3. History, to view the history of calculations and conversions that have been done.     |",
 	"|                                                                                          |",
@@ -225,8 +225,8 @@ char guide[25][93] = {
 	"|                                     CALCULATOR GUIDE                                     |",
  	"<==========================================================================================>",
  	"|                                                                                          |",
- 	"|       1. Calculator Standard                                                             |",
- 	"|       2. Calculator Programmer                                                           |",
+ 	"|       1. Standard Calculator                                                             |",
+ 	"|       2. Programming Calculator                                                          |",
  	"|                                                                                          |",
  	"<==========================================================================================>",
 	"|  Your choice ['0' to go back to menu] : [ ][ENTER]                                       |",
@@ -235,7 +235,7 @@ char guide[25][93] = {
 
 char calStdGuide[24][94] = {	
 	"{==========================================================================================}",
-	"|                                CALCULATOR STANDARD GUIDE                                 |",
+	"|                                STANDARD CALCULATOR GUIDE                                 |",
 	"<==========================================================================================>",
  	"| Follow these rules, otherwise the expression will be considered INVALID!                 |",
  	"|                                                                                          |",
@@ -260,7 +260,7 @@ char calStdGuide[24][94] = {
 
 char calProgGuide[41][89] = {
 	"{=======================================================================================}",
-	"|                              CALCULATOR PROGRAMMER GUIDE                              |",
+	"|                             PROGRAMMING CALCULATOR GUIDE                              |",
 	"<===========================================&===========================================>",
 	"|           Decimal Converter Guide         |        Hexadecimal Converter Guide        |",
 	"<===========================================#===========================================>",
