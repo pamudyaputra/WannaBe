@@ -26,6 +26,8 @@ typedef struct tNodeTree {
 	nodeT left, right;          // Anak kanan kiri
 }NodeTree;
 
+void setIterator(int val);
+
 nodeT CreateNodeTree(double value, bool isDigit);
 /* Konstruktor node tree dan memberi value pada node tree */
 /* IS : Node tree sembarang */

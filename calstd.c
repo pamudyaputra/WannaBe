@@ -41,6 +41,7 @@ void CalStd()
 		mapCalStd();
 		memset(infixHist,0,MAX_STR);
 		memset(treeHist,0,MAX_STR);
+		setIterator(0);
 		
 		// Scan user input
 	    gotoxy(width/2-45+3, height/2-8+3); scanf("%[^\n]", &infix); getchar();

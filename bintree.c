@@ -5,6 +5,10 @@
 
 int t = 0;
 
+void setIterator(int val){
+	t = val;
+}
+
 /* Body fucntion / procedure */
 nodeT CreateNodeTree(double value, bool isDigit) 
 {

@@ -63,14 +63,20 @@ void writeCalStd(char *infix, char* tree, double res){
 	t = time(NULL);
 	tm_info = localtime(&t);
 	
+	memset(std.result,0,MAX_STR);
 	strcpy(std.infix, infix);
 	strcpy(std.tree, tree);
+	
+	if(res < 0){
+		std.result[r++] = '-';
+		res *= -1;
+	}
 	
 	intl = (int)res;
 	res -= intl; res *= 100;
 	intr = (int)res;
 	
-	memset(std.result,0,MAX_STR);
+	
 	itoa(intl,num,10);
     for(i = 0; i < strlen(num); i++)
    		std.result[r++] = num[i];
