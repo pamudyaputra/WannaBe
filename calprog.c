@@ -8,6 +8,7 @@
 
 /* Kamus Data */
 int i, j, width, height;
+progHistory hist;
 
 /* Body Function/Procedure */
 
@@ -78,15 +79,28 @@ void FromDec(){
 		if(check == 1)
 			break;	// endwhile
 	}
+	memset(hist.dec,0,MAX_STR);
+	memset(hist.bin,0,MAX_STR);
+	memset(hist.oct,0,MAX_STR);
+	memset(hist.hex,0,MAX_STR);
+	
+	// Decimal value
+	strcpy(hist.dec,input);
+	
 	// Print Decimal Value
 	gotoxy(width/2-31+20, height/2-8+5);  printf("%d", dec);
 	// Convert Decimal to Binary and Print Decimal Value
-	gotoxy(width/2-31+20, height/2-8+7);  DecBin(dec);
+	gotoxy(width/2-31+20, height/2-8+7);  DecBin(dec, hist.bin);
 	// Convert Decimal to Octadecimal and Print Octadecimal Value
-	gotoxy(width/2-31+20, height/2-8+9);  DecOct(dec);
+	gotoxy(width/2-31+20, height/2-8+9);  DecOct(dec, hist.oct);
 	// Convert Decimal to Hexadecimal and Print Hexadecimal Value
-	gotoxy(width/2-31+20, height/2-8+11); DecHex(dec);
-
+	gotoxy(width/2-31+20, height/2-8+11); DecHex(dec, hist.hex);
+	
+	// From Decimal
+	hist.from = '1';
+	
+	// Write History Record
+	writeCalProg(hist);
 }
 
 void FromBin(){
@@ -98,20 +112,36 @@ void FromBin(){
 	/*		  proses konversinya */
 	
 	/* Kamus Data */
-	int dec;	// Decimal value
+	int dec;			// Decimal value
+	char num[MAX_STR];	// 
 	
 	/* Algoritma */
-	dec = BinDec();	// Input & print binary value, converting Binary -> Decimal
+	memset(hist.dec,0,MAX_STR);
+	memset(hist.bin,0,MAX_STR);
+	memset(hist.oct,0,MAX_STR);
+	memset(hist.hex,0,MAX_STR);
+	memset(num,0,MAX_STR);
+	
+	dec = BinDec(hist.bin);	// Input & print binary value, converting Binary -> Decimal
 	
 	if(dec == 0)
 		return;		// Go back to menu
+		
+	itoa(dec,num,10);
+	strcpy(hist.dec,num);
 	
 	// Print Decimal Value
 	gotoxy(width/2-31+20, height/2-8+5);   printf("%d", dec);
 	// Convert Decimal to Octadecimal and Print Octadecimal Value
-	gotoxy(width/2-31+20, height/2-8+9);   DecOct(dec);
+	gotoxy(width/2-31+20, height/2-8+9);   DecOct(dec, hist.oct);
 	// Convert Decimal to Hexadecimal and Print Hexadecimal Value
-	gotoxy(width/2-31+20, height/2-8+11);  DecHex(dec);
+	gotoxy(width/2-31+20, height/2-8+11);  DecHex(dec, hist.hex);
+	
+	// From Binary
+	hist.from = '2';
+	
+	// Write History Record
+	writeCalProg(hist);
 }
 
 void FromOct(){
@@ -123,20 +153,36 @@ void FromOct(){
 	/*		  proses konversinya */
 	
 	/* Kamus Data */
-	int dec;	// Decimal value
+	int dec;			// Decimal value
+	char num[MAX_STR];	
 	
 	/* Algoritma */
-	dec = OctDec();	// Input & print octadecimal value, converting Octa -> Decimal
+	memset(hist.dec,0,MAX_STR);
+	memset(hist.bin,0,MAX_STR);
+	memset(hist.oct,0,MAX_STR);
+	memset(hist.hex,0,MAX_STR);
+	memset(num,0,MAX_STR);
+	
+	dec = OctDec(hist.oct);	// Input & print octadecimal value, converting Octa -> Decimal
 	
 	if(dec == 0)
 		return;		// Go back to menu
+		
+	itoa(dec,num,10);
+	strcpy(hist.dec,num);
 	
 	// Print Decimal Value
 	gotoxy(width/2-31+20, height/2-8+5);  printf("%d", dec);
 	// Convert Decimal to Binary and Print Binary Value
-	gotoxy(width/2-31+20, height/2-8+7); DecBin(dec);
+	gotoxy(width/2-31+20, height/2-8+7); DecBin(dec, hist.bin);
 	// Convert Decimal to Hexadecimal and Print Octadecimal Value
-	gotoxy(width/2-31+20, height/2-8+11); DecHex(dec);
+	gotoxy(width/2-31+20, height/2-8+11); DecHex(dec, hist.hex);
+	
+	// From Octadecimal
+	hist.from = '3';
+	
+	// Write History Record
+	writeCalProg(hist);
 }
 
 void FromHex(){
@@ -148,30 +194,46 @@ void FromHex(){
 	/*		  proses konversinya */
 	
 	/* Kamus Data */
-	int dec;	// Decimal value
+	int dec;			// Decimal value
+	char num[MAX_STR];	//
 	
 	/* Algoritma */
-	dec = HexDec();	// Input & print hexadecimal value, converting Hexa -> Decimal
+	memset(hist.dec,0,MAX_STR);
+	memset(hist.bin,0,MAX_STR);
+	memset(hist.oct,0,MAX_STR);
+	memset(hist.hex,0,MAX_STR);
+	memset(num,0,MAX_STR);
+	
+	dec = HexDec(hist.hex);	// Input & print hexadecimal value, converting Hexa -> Decimal
 	
 	if(dec == 0)
 		return;		// Go back to menu
+		
+	itoa(dec,num,10);
+	strcpy(hist.dec,num);
 	
 	// Print Decimal Value
 	gotoxy(width/2-31+20, height/2-8+5); printf("%d", dec);
 	// Convert Decimal to Binary and Print Binary Value
-	gotoxy(width/2-31+20, height/2-8+7); DecBin(dec);
+	gotoxy(width/2-31+20, height/2-8+7); DecBin(dec, hist.bin);
 	// Convert Decimal to Octadecimal and Print Octadecimal value
-	gotoxy(width/2-31+20, height/2-8+9); DecOct(dec);
+	gotoxy(width/2-31+20, height/2-8+9); DecOct(dec, hist.oct);
+	
+	// From Hexadecimal
+	hist.from = '4';
+	
+	// Write History Record
+	writeCalProg(hist);
 }
 
-void DecBin(int dec){
+void DecBin(int dec, char* hist){
 	/* Mengkonversi bilangan Desimal ke Biner */
 	/* I.S. : Bilangan desimal belum dikonversi ke biner */
 	/* F.S. : Hasil konversi sudah ditampilkan */
 	
 	/* Kamus Data */
-	int i=0, j=0;	// Iterator
-	int bin[100];	// Binary Value
+	int i=0, j=0, h=0;	// Iterator
+	int bin[100];		// Binary Value
 	
 	/* Algoritma */
 	while(dec != 0){
@@ -183,17 +245,18 @@ void DecBin(int dec){
 	// Print Result
 	for(j = i-1; j>=0 ; j--){
 		printf("%d", bin[j]);
+		hist[h++] = bin[j] + '0';
 	}
 }
 
-void DecOct(int dec){
+void DecOct(int dec, char* hist){
 	/* Mengkonversi bilangan Desimal ke Oktadesimal */
 	/* I.S. : Bilangan desimal belum dikonversi ke oktadesimal */
 	/* F.S. : Hasil konversi sudah ditampilkan */
 	
 	/* Kamus Data */
-	int i=0, j=0;	// Iterator
-	int oct[30];	// Octadecimal value
+	int i=0, j=0, h=0;	// Iterator
+	int oct[30];		// Octadecimal value
 	
 	/* Algoritma */
 	while(dec != 0){
@@ -205,10 +268,11 @@ void DecOct(int dec){
 	// Print Result
 	for(j = i-1 ; j>=0 ; j--){
 		printf("%d", oct[j]);
+		hist[h++] = oct[j] + '0';
 	}
 }
 
-void DecHex(int dec){
+void DecHex(int dec, char* hist){
 	/* Mengkonversi bilangan desimal ke hexadesimal */
 	/* I.S. : Bilangan desimal belum dikonversi ke heksadesimal */
 	/* F.S. : Hasil konversi sudah ditampilkan */
@@ -260,9 +324,10 @@ void DecHex(int dec){
 	for(j = i-1 ; j>=0 ; j--){
 		printf("%c", hex[j]);
 	}
+	strcpy(hist,hex);
 }
 
-int BinDec(){
+int BinDec(char* hist){
 	/* Mengkonversi bilangan Biner ke Desimal */
 	/* dan mengembalikan hasil konversinya */
 	/* I.S. : Bilangan biner belum dikonversi ke desimal */
@@ -288,7 +353,7 @@ int BinDec(){
 		
 		check = 1;
 			
-		for(i = 0; i < strlen(bin)-1 ; i++){
+		for(i = 0; i < strlen(bin) ; i++){
 			if(bin[i] == '1' || bin[i] == '0'){
 				
 			} else {	// if binary value contains other than 0 or 1 number
@@ -304,6 +369,7 @@ int BinDec(){
 	
 	// Print Binary Value
 	gotoxy(width/2-31+20, height/2-8+7); printf("%s", bin);
+	strcpy(hist,bin);
 	
 	// Binary to Decimal Converter
 	for(i = 0 ; i < strlen(bin)-1 ; i++){
@@ -316,7 +382,7 @@ int BinDec(){
 	return dec;
 }
 
-int OctDec(){
+int OctDec(char* hist){
 	/* Mengkonversi bilangan Oktadesimal ke Desimal */
 	/* dan mengembalikan hasil konversinya */
 	/* I.S. : Bilangan oktadesimal belum dikonversi ke desimal */
@@ -350,7 +416,7 @@ int OctDec(){
 			if(input[i] >= '0' && input[i] <= '7'){
 				
 			} else {
-			gotoxy(width/2-31+2, height/2-8+14); printf("The input is invalid! Please input again... ");
+				gotoxy(width/2-31+2, height/2-8+14); printf("The input is invalid! Please input again... ");
 				getch();
 				check = 0;
 				break;	// endfor
@@ -365,6 +431,7 @@ int OctDec(){
 	
 	// Print Octadecimal Value
 	gotoxy(width/2-31+20, height/2-8+9); printf("%d", oct);
+	strcpy(hist,input);
 	
 	// Octadecimal to Decimal Converter
 	while(oct != 0){
@@ -375,7 +442,7 @@ int OctDec(){
 	return dec;
 }
 
-int HexDec(){
+int HexDec(char* hist){
 	/* Mengkonversi bilangan Hexadesimal ke Desimal */
 	/* dan mengembalikan hasil konversinya */
 	/* I.S. : Bilangan heksadesimal belum dikonversi ke desimal */
@@ -430,6 +497,7 @@ int HexDec(){
 	
 	// Print Hexadecimal Value
 	gotoxy(width/2-31+20, height/2-8+11); printf("%s", hex);
+	strcpy(hist,hex);
 	
 	// Hexadecimal to Decimal Converter
 	for(i = len--; i>=0 ; i--){

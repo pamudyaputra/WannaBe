@@ -17,6 +17,8 @@
 #ifndef bintree_H
 #define bintree_H
 
+#define MAX_STR 100
+
 typedef struct tNodeTree *nodeT;	
 typedef struct tNodeTree {
 	double value;               // Menyimpan nilai operator or operand
@@ -34,7 +36,7 @@ nodeT TreeInsert(nodeT root, double newValue, bool isDigit);
 /* IS : Root mungkin saja kosong */
 /* FS : Root menjadi bagian dari tree dengan value newValue & isDigit */
 
-void PrintTree (nodeT root);
+void PrintTree (nodeT root, char* hist);
 /* Menampilkan susunan tree */
 /* IS : Root terdefinisi */
 /* FS : Semua simpul root tertampilkan pada layar */

@@ -3,6 +3,8 @@
 #ifndef bintree_C
 #define bintree_C
 
+int t = 0;
+
 /* Body fucntion / procedure */
 nodeT CreateNodeTree(double value, bool isDigit) 
 {
@@ -62,25 +64,51 @@ nodeT TreeInsert(nodeT root, double newValue, bool isDigit)
 }
 
 /* Menampilakn susunan tree */
-void PrintTree (nodeT root) 
+void PrintTree (nodeT root, char* hist) 
 {
 	/* Menampilakn susunan tree */
 	/* IS : Root terdefinisi */
 	/* FS : Semua simpul root tertampilkan pada layar */
 	
 	/* Kamus Data */
+	double dob = 0;
+	int intl = 0;
+	int intr = 0;
+	int i = 0;
+	char num[MAX_STR];
 	
 	/* Algoritma */
+	memset(num,0,MAX_STR);
     if (root != NULL) {
         if (root->isDigit) {
             printf("%.2lf", root->value);
+            
+            dob = root->value;
+            intl = (int)dob;
+            dob -= intl; dob *= 100;
+            intr = (int)dob;
+            itoa(intl,num,10);
+            for(i = 0; i < strlen(num); i++)
+            	hist[t++] = num[i];
+            hist[t++] = '.';
+            itoa(intr,num,10);
+            if(intr == 0){
+            	for(i = 0; i < 2; i++)
+            		hist[t++] = '0';
+			} else {
+				for(i = 0; i < 2; i++)
+            		hist[t++] = num[i];
+			}
         } else {
             printf("%c", (int)root->value);
+            hist[t++] = (char)root->value;
         }
         printf("(");
-        PrintTree(root->left);
-        PrintTree(root->right);
+        hist[t++] = '(';
+        PrintTree(root->left, hist);
+        PrintTree(root->right, hist);
         printf(")");
+        hist[t++] = ')';
     }
 }
 

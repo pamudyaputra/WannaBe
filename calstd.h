@@ -15,6 +15,7 @@
 #include <stdbool.h>
 #include "postfix.h"
 #include "bintree.h"
+#include "history.h"
 
 #ifndef calstd_H
 #define calstd_H

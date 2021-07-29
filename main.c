@@ -15,7 +15,6 @@
 #include <math.h>
 #include "calprog.h"
 #include "calstd.h"
-#include "map.h"
 
 /* Body fucntion / procedure */
 void Guide();
@@ -48,7 +47,8 @@ int main()
 				CalProg();
 				break;
 			case 3 :
-//				History();
+				History();
+				break;
 			case 4 :
 				Guide();
 				break;

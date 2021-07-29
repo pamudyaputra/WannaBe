@@ -13,6 +13,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "map.h"
+#include "history.h"
 
 void From(int opt);
 /* Pemilihan modul konversi berdasarkan pilihan */
@@ -53,29 +54,29 @@ void FromHex();
 /* F.S. : Jenis bilangan hasil konversi sudah dipilih dan memulai */
 /*		  proses konversinya */
 
-void DecBin(int dec);
+void DecBin(int dec, char* hist);
 /* Mengkonversi bilangan Desimal ke Biner */
 /* I.S. : Bilangan desimal belum dikonversi ke biner */
 /* F.S. : Hasil konversi sudah ditampilkan */
 
-void DecOct(int dec);
+void DecOct(int dec, char* hist);
 /* Mengkonversi bilangan Desimal ke Oktadesimal */
 /* I.S. : Bilangan desimal belum dikonversi ke oktadesimal */
 /* F.S. : Hasil konversi sudah ditampilkan */
 
-void DecHex(int dec);
+void DecHex(int dec, char* hist);
 /* Mengkonversi bilangan desimal ke hexadesimal */
 /* I.S. : Bilangan desimal belum dikonversi ke heksadesimal */
 /* F.S. : Hasil konversi sudah ditampilkan */
 
-int BinDec();
+int BinDec(char *hist);
 /* Mengkonversi bilangan Biner ke Desimal */
 /* dan mengembalikan hasil konversinya */
 /* I.S. : Bilangan biner belum dikonversi ke desimal */
 /* F.S. : Bilangan inputan biner sudah di print dan */
 /* 		  bilangan desimal hasil konversi sudah dikembalikkan */
 
-int OctDec();
+int OctDec(char *hist);
 /* Mengkonversi bilangan Oktadesimal ke Desimal */
 /* dan mengembalikan hasil konversinya */
 /* I.S. : Bilangan oktadesimal belum dikonversi ke desimal */
@@ -84,7 +85,7 @@ int OctDec();
 /* Sumber referensi algoritma : https://www.programiz.com/c-programming/examples/octal-decimal-convert */
 /* Dimodifikasi oleh : Pamudya Putra Pamungkas */
 	
-int HexDec();
+int HexDec(char *hist);
 /* Mengkonversi bilangan Hexadesimal ke Desimal */
 /* dan mengembalikan hasil konversinya */
 /* I.S. : Bilangan heksadesimal belum dikonversi ke desimal */

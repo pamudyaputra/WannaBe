@@ -15,6 +15,9 @@
 /* Kamus Data */
 int i, j, width, height;
 bool valid;
+char infixHist[MAX_STR] = "";
+char treeHist[MAX_STR] = "";
+double res;
 
 /* Body fucntion / procedure */
 void CalStd()
@@ -36,6 +39,8 @@ void CalStd()
 		// Print map for calculator standard
 		system ("cls");
 		mapCalStd();
+		memset(infixHist,0,MAX_STR);
+		memset(treeHist,0,MAX_STR);
 		
 		// Scan user input
 	    gotoxy(width/2-45+3, height/2-8+3); scanf("%[^\n]", &infix); getchar();
@@ -44,6 +49,9 @@ void CalStd()
 	    }
 	    
 	    if (ValidChar(infix) && ValidParenthesized(infix) && ValidOp(infix) ){
+	    	// Copy Infix Expression
+	    	strcpy(infixHist,infix);
+	    	
 	    	// Konversi notasi and masukkan ke list
 		    InfixToPostfix(infix, postfix);
 		    ListPush(&infixExpressions, infix);
@@ -60,15 +68,19 @@ void CalStd()
 		    // Buat pohon and print
 		    tree = BuildTreeInterface(postfixExpressions->string);
 		    gotoxy(width/2-45+23, height/2-8+10);
-			PrintTree(tree);
+			PrintTree(tree, treeHist);
 			
 			// Print kalkulasi pohon
+			res = TreeCalculate(tree);
 			gotoxy(width/2-45+23, height/2-8+12);
-	        printf("%.2lf", TreeCalculate(tree));
+	        printf("%.2lf", res);
 			
 			// Move to next node of list (new calculate)
 		    infixExpressions = infixExpressions->next;
 		    postfixExpressions = postfixExpressions->next;
+		    
+		    // Write History Record
+		    writeCalStd(infixHist, treeHist, res);
 		
 			gotoxy(width/2-45+2, height/2-8+15); printf("Press any key to calculate again... "); getch();
 		} else {
