@@ -127,6 +127,12 @@ void showStdHist(){
 	width = getWidth();
 	height = getHeight();
 	
+	if(fptr == NULL){
+		gotoxy(width/2-7,height/2);
+		printf("File Not Found");
+		return;
+	}
+	
 	// Count records
 	while(!feof(fptr)){
 		fscanf(fptr, "%s %s %s %s %s\n", &hist.date,&hist.time,&hist.infix,&hist.tree,&hist.result);
@@ -202,6 +208,12 @@ void showProgHist(){
 	
 	width = getWidth();
 	height = getHeight();
+	
+	if(fptr == NULL){
+		gotoxy(width/2-7,height/2);
+		printf("File Not Found");
+		return;
+	}
 	
 	// Count records
 	while(!feof(fptr)){
