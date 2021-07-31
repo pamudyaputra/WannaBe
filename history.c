@@ -401,11 +401,12 @@ void History(){
 		if(choice == 0)
 			return;
 		
-		system("cls");
 		switch(choice){
 			case 1:
+				system("cls");
 				showStdHist(); break;
 			case 2:
+				system("cls");
 				showProgHist(); break;
 			default:
 				gotoxy(width/2-31+1,height/2-5+8);								 

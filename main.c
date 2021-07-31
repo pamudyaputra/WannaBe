@@ -33,11 +33,8 @@ int main()
 		
 		int	width = getWidth();
 		int	height = getHeight();
-		
-		int x = width / 2 - 14;
-		int y = height / 2 + 9;
 	
-		gotoxy(x, y); scanf("%d", &choice); getchar();
+		gotoxy(width / 2 - 14, height / 2 + 9); scanf("%d", &choice); getchar();
 		
 		switch(choice) {
 			case 1 :
@@ -57,7 +54,11 @@ int main()
 				break;
 			case 0 :
 				exit(EXIT_SUCCESS);
-			
+			default:
+				gotoxy(width/2-31+1,height/2-5+8);								 
+				printf("                                                         ");
+				gotoxy(width/2-31+1,height/2-5+14);
+				printf("  Invalid Input! Please input again..."); getch();
 		}
 	
 	} while (choice != 0);
@@ -92,6 +93,13 @@ void Guide()
 				mapCalProgGuide();
 				gotoxy(width / 2 - 42, height / 2 + 19); printf("Press any key to go to back... "); getch();
 				break;
+			case 0:
+				break;
+			default:
+				gotoxy(width/2-31,height/2-5+15);								 
+				printf("                                                         ");
+				gotoxy(width/2-44,height/2-5+15);
+				printf("  Invalid Input! Please input again..."); getch();
 		}
 	} while (choice != 0);
 }
