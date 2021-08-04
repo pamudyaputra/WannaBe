@@ -283,6 +283,8 @@ void DecHex(int dec, char* hist){
 	char hex[20];	// Hexadecimal value
 	
 	/* Algoritma */
+	memset(hex,0,20);
+	
 	while(dec!=0){
 		if(dec%16 > 9){
 			switch(dec%16){

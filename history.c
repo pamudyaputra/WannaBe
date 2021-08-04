@@ -112,6 +112,8 @@ void writeCalProg(progHistory prog){
 	
 	fptr = fopen("ProgHistory.txt", "ab");
 	fprintf(fptr, "%s %s %s %s %s %s %c\n",prog.date,prog.time,prog.dec,prog.bin,prog.oct,prog.hex,prog.from);
+	
+	fclose(fptr);
 }
 
 void showStdHist(){
