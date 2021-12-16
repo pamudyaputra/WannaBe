@@ -1,7 +1,7 @@
 /* 
  * Program 			: main.c
  * Deskripsi 		: Program utama
- * Nama 			: Adriana Anggita Daeli 
+ * Nama 			: Adriana Anggita Daeli & Pamudya Putra Pamungkas
  * Tanggal			: 26 Juli 2021
  * Compiler			: Dev-C++
  * ==============================================================
